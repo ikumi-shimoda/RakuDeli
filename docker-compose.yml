@@ -1,0 +1,55 @@
+services:
+  app:
+    build: ./backend
+    container_name: rakudeli_app
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+    networks:
+      - rakudeli_network
+    ports:
+      - '8000:8000'
+    command: php artisan serve --host=0.0.0.0 --port=8000
+
+  db:
+    image: mysql:8
+    container_name: rakudeli_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: rakudeli
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - rakudeli_network
+
+  frontend:
+    build: ./frontend
+    container_name: rakudeli_frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - app
+    networks:
+      - rakudeli_network
+    stdin_open: true
+    tty: true
+    command: npm run dev
+    environment:
+      - WATCHPACK_POLLING=true
+
+networks:
+  rakudeli_network:
+
+volumes:
+  db_data:
