@@ -11,7 +11,7 @@ function page() {
         </button>
       </Link>
       <Link href='/test/2'>
-        <button className='px-4 py-2 bg-blue-500 text-white rounded'>
+        <button className='px-4 py-2 bg-blue-500 text-white rounded ml-2'>
           2のTest
         </button>
       </Link>
