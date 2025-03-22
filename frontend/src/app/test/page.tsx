@@ -17,7 +17,11 @@ function page() {
   return (
     <div>
       <div>test配下のpage</div>
-      <TestList testData={testData} />
+      <div className='flex flex-col'>
+        {testData.map((data: TestData, index: number) => {
+          return <TestList key={data.id} data={data} />
+        })}
+      </div>
     </div>
   )
 }

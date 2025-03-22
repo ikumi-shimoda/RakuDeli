@@ -6,7 +6,9 @@ function Header() {
   return (
     <div className='p-3 flex justify-between items-center'>
       <div>
-        <Image src='/next.svg' alt='logo' width={100} height={100} priority />
+        <Link href='/'>
+          <Image src='/next.svg' alt='logo' width={100} height={100} priority />
+        </Link>
       </div>
       <div>
         <Link href='/'>
