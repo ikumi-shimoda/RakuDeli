@@ -3,11 +3,10 @@ import React from 'react'
 import Image from 'next/image'
 
 function Header() {
-  const id = 2
   return (
     <div className='p-3 flex justify-between items-center'>
       <div>
-        <Image src='/next.svg' alt='logo' width={100} height={100} />
+        <Image src='/next.svg' alt='logo' width={100} height={100} priority />
       </div>
       <div>
         <Link href='/'>
