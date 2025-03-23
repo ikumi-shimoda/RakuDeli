@@ -1,17 +1,19 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { User } from '@/types/user'
+import UserList from '../components/User/UserList'
 
 function Page() {
-  const [message, setMessage] = useState<string>('')
+  const [data, setData] = useState<User | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post('http://localhost:8000/api/users')
-        setMessage(response.data.message)
+        setData(response.data)
       } catch (error: any) {
-        console.log(error.message)
+        console.error(error.message)
       }
     }
 
@@ -20,7 +22,11 @@ function Page() {
 
   return (
     <div>
-      <h1>{message}</h1>
+      {/* 初期値がnullだから?つけないとエラーになる */}
+      <h1>Message: {data?.message}</h1>
+      {data?.users.map((user: User, index: number) => (
+        <UserList key={index} user={user} />
+      ))}
     </div>
   )
 }
