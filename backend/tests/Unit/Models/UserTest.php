@@ -2,15 +2,26 @@
 
 namespace Tests\Unit\Models;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
-    public function test_example(): void
+    use RefreshDatabase;
+
+    protected $user;
+
+    public function setUp(): void
     {
-        $this->assertTrue(true);
+        parent::setUp();
+        $this->user = new User();
+    }
+
+    public function test_getAllUsers()
+    {
+        User::factory()->create();
+        $allUserCount = $this->user->getAllUsers()->count();
+        $this->assertSame($allUserCount, 1);
     }
 }
