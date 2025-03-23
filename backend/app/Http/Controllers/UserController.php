@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+
 class UserController extends Controller
 {
     public $user;
@@ -12,7 +14,7 @@ class UserController extends Controller
     {
         $this->user = $user;
     }
-    public function index()
+    public function index(): JsonResponse
     {
         $allUsers = $this->user->getAllUsers();
 
