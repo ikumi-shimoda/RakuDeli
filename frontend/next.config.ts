@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  reactStrictMode: true,
+  env: {
+    RAKUTEN_APP_ID: process.env.NEXT_PUBLIC_RAKUTEN_APP_ID,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
