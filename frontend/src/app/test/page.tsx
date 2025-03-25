@@ -1,5 +1,5 @@
 import React from 'react'
-import TestList from '../components/Test/TestList'
+import TestList from '../../components/test/testList'
 import { TestData } from '@/types/test'
 
 function page() {

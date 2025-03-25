@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { User } from '@/types/user'
-import UserList from '../components/User/UserList'
+import UserList from '../../components/user/userList'
 
 function Page() {
   const [data, setData] = useState<User | null>(null)
