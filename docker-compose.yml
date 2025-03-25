@@ -1,7 +1,7 @@
 services:
   app:
     build: ./backend
-    container_name: rakudeli_app
+    container_name: unishelf_app
     volumes:
       - ./backend:/var/www/html
     depends_on:
@@ -10,17 +10,17 @@ services:
       - APP_ENV=local
       - APP_DEBUG=true
     networks:
-      - rakudeli_network
+      - unishelf_network
     ports:
       - '8000:8000'
     command: php artisan serve --host=0.0.0.0 --port=8000
 
   db:
     image: mysql:8
-    container_name: rakudeli_db
+    container_name: unishelf_db
     restart: always
     environment:
-      MYSQL_DATABASE: rakudeli
+      MYSQL_DATABASE: unishelf
       MYSQL_USER: admin
       MYSQL_PASSWORD: pass
       MYSQL_ROOT_PASSWORD: rootpass
@@ -30,11 +30,11 @@ services:
       - db_data:/var/lib/mysql
       - ./backend/.docker/mysql/init:/docker-entrypoint-initdb.d
     networks:
-      - rakudeli_network
+      - unishelf_network
 
   frontend:
     build: ./frontend
-    container_name: rakudeli_frontend
+    container_name: unishelf_frontend
     volumes:
       - ./frontend:/app
     ports:
@@ -42,7 +42,7 @@ services:
     depends_on:
       - app
     networks:
-      - rakudeli_network
+      - unishelf_network
     stdin_open: true
     tty: true
     command: npm run dev
@@ -50,7 +50,7 @@ services:
       - WATCHPACK_POLLING=true
 
 networks:
-  rakudeli_network:
+  unishelf_network:
 
 volumes:
   db_data:
