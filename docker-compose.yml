@@ -1,9 +1,11 @@
 services:
   app:
-    build: ./backend
+    build:
+      context: ./backend/Laravel
+      dockerfile: Dockerfile
     container_name: unishelf_app
     volumes:
-      - ./backend:/var/www/html
+      - ./backend/Laravel:/var/www/html
     depends_on:
       - db
     environment:
@@ -14,6 +16,22 @@ services:
     ports:
       - '8000:8000'
     command: php artisan serve --host=0.0.0.0 --port=8000
+
+  go_app:
+    build:
+      context: ./backend/Go
+      dockerfile: Dockerfile
+    container_name: unishelf_go_app
+    volumes:
+      - ./backend/Go:/app
+    ports:
+      - '8080:8080'
+    networks:
+      - unishelf_network
+    environment:
+      - GO_ENV=development
+    depends_on:
+      - db
 
   db:
     image: mysql:8
