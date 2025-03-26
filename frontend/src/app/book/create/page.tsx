@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import axios from 'axios'
-import RakutenBookSearchInput from '@/components/Rakuten/RakutenBookSearchInput'
+import RakutenBookSearchInput from '@/components/rakuten/RakutenBookSearchInput'
 
 function page() {
   const [title, setTitle] = useState('')
