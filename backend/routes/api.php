@@ -6,4 +6,5 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 
 Route::post('/users', [UserController::class, 'index']);
+Route::get('/user/books', [UserController::class, 'getUserBooks']);
 Route::post('/book/store', [BookController::class, 'store']);

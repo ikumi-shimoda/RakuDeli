@@ -14,6 +14,11 @@ class Book extends Model
         'cover_image',
     ];
 
+    public function getUserBooks($userId)
+    {
+        return $this->where('user_id', $userId)->get();
+    }
+
     public function store(Request $request)
     {
         $this->create([
