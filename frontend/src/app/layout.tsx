@@ -8,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className='bg-gray-400 max-w-screen-lg mx-auto'>
+      <body>
         <Header />
         {children}
       </body>
