@@ -28,11 +28,11 @@ function MainComponent() {
             <span className='relative z-10'>UniShelf</span>
             <span className='absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#B8860B]/0 via-[#B8860B]/20 to-[#B8860B]/0'></span>
           </h2>
-          <p className='text-xl text-[#666666] font-light tracking-wider'>
+          <div className='text-xl text-[#666666] font-light tracking-wider'>
             <Link href='/book/create'>
-              <div>あなただけの本棚 +</div>
+              <p>あなただけの本棚 +</p>
             </Link>
-          </p>
+          </div>
         </section>
 
         <section className='max-w-7xl mx-auto px-8 py-16'>
@@ -57,14 +57,6 @@ function MainComponent() {
           </div>
         </section>
       </main>
-
-      <footer className='border-t border-[#B8860B]/10 mt-24 bg-gradient-to-b from-white to-[#B8860B]/[0.02]'>
-        <div className='max-w-7xl mx-auto px-8 py-8'>
-          <p className='text-center text-xs text-[#1A1A1A]/70 font-light tracking-wider'>
-            © 2025 UniShelf. All rights reserved.
-          </p>
-        </div>
-      </footer>
 
       <style jsx global>{`
         @keyframes fadeIn {
